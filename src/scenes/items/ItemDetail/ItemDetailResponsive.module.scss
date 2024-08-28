@@ -1,0 +1,57 @@
+.zoom {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.name_item_details {
+  margin: 20px 0;
+  width: 100%;
+  max-width: 300px;
+}
+
+.arrows {
+  display: flex;
+  margin-right: 50px;
+}
+
+.arrowZoom {
+  margin-right: 40px;
+}
+
+.right {
+  transform: rotate(180deg);
+  margin-bottom: 4px;
+}
+
+.slider {
+  display: flex;
+  width: 390px;
+  overflow: scroll;
+}
+
+.ZoomPanel {
+  margin-top: -5px;
+  background-color: #fff;
+  border: solid 5px #444444;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.partition {
+  width: 27px;
+  height: 5px;
+  background-color: #000;
+  border-radius: 5px;
+}
+
+.up {
+  transform: rotate(-45deg);
+  margin-top: 12px;
+}
+.down {
+  transform: rotate(45deg);
+  margin-top: 12px;
+}

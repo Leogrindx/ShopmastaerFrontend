@@ -1,0 +1,1 @@
+export const fashions = ["Oversized", "Regular Fit","Relaxed Fit","Loose Fit","Skinny Fit","Slim Fit"]

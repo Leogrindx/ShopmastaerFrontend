@@ -1,0 +1,31 @@
+.cross {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .partition {
+    width: 15px;
+    height: 4px;
+    background-color: #000;
+    border-radius: 5px;
+    position: absolute;
+  }
+  
+  .up {
+    transform: rotate(-45deg);
+  }
+  .down {
+    transform: rotate(45deg);
+  }
+
+  .upArrow{
+    transform: rotate(50deg) translate(5px);
+  }
+  .downArrow{
+    transform: rotate(-50deg) translate(5px);
+  }

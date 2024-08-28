@@ -1,0 +1,62 @@
+@import "../../config.module.scss";
+
+.headerMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin: 20px 0;
+}
+
+.navBar {
+  margin-top: 10px;
+  display: flex;
+}
+
+.links {
+  color: black;
+}
+
+.linkNotActive {
+  background-color: rgb(222, 222, 222);
+  color: rgb(0, 0, 0);
+  margin: 0 5px;
+  text-transform: capitalize;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.linkActive {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  margin: 0 5px;
+  text-transform: capitalize;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.search button {
+  position: relative;
+  top: 4px;
+  left: 5px;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.logo {
+  position: relative;
+  left: -23px;
+  z-index: $logo;
+}
+
+.block_user {
+  display: flex;
+}
+
+.cart {
+  position: relative;
+  margin-top: 5px;
+}

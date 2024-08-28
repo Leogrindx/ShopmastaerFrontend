@@ -1,0 +1,69 @@
+@import "../../../../config.module.scss";
+.basket_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: 30px 0 0 235px;
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid #000;
+  overflow: hidden;
+  z-index: $cartItems;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.5, -0.5, 0.5, 2);
+}
+
+.show {
+  height: 300px;
+}
+
+.img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sizes {
+  p {
+    font-size: 25px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+  }
+  p:hover {
+    background-color: #cbc6c6;
+  }
+}
+
+.close {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.partition {
+  width: 30px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #000;
+}
+
+.right {
+  transform: rotate(45deg);
+  position: relative;
+  top: 2px;
+}
+
+.left {
+  transform: rotate(-45deg);
+}

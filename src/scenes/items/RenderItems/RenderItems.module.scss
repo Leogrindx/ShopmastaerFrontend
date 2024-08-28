@@ -1,0 +1,162 @@
+.items {
+  width: 100%;
+  height: 100%;
+}
+
+.view_items {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.item {
+  width: 280px;
+  margin: 20px 20px;
+  color: #000;
+  box-shadow: 0 0 4px rgb(95, 95, 95);
+}
+
+.articl_items {
+  overflow: hidden;
+  margin: none;
+}
+
+.btn_item {
+  display: none;
+  position: absolute;
+  margin: -180px 0px 0px 103px;
+  background-color: #e59f67;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.item:hover .articl_items img {
+  transition: all 0.5s;
+  transform: scale(1.1, 1.1);
+}
+
+.item:hover {
+  .btn_item {
+    display: block;
+  }
+}
+
+.img {
+  width: 280px;
+  height: 100%;
+  max-height: 360px;
+  cursor: pointer;
+}
+
+.label {
+  width: 1px;
+}
+
+.basket_item img {
+  position: relative;
+  top: 2px;
+  left: 0px;
+  transform: scale(0.9);
+}
+
+.basket_item:hover {
+  background-color: #e59f67;
+}
+
+.item_text {
+  height: 100px;
+}
+
+.item_textColumn {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.item_price {
+  display: flex;
+  justify-content: end;
+  width: 50%;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: cursive;
+}
+
+.currency {
+  margin-left: 5px;
+}
+
+.item_size {
+  width: 200px;
+  height: 10px;
+  display: flex;
+  margin: 0 10px 10px 10px;
+  padding: 10px 0;
+  overflow: hidden;
+  cursor: pointer;
+  p {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+}
+
+.brand {
+  text-transform: capitalize;
+  font-weight: bold;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.item_name {
+  width: 50%;
+}
+
+.name {
+  height: 20px;
+  overflow: hidden;
+}
+
+.notItems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  h1 {
+    text-align: center;
+  }
+}
+
+.trigger {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.arrow {
+  font-weight: bold;
+  margin: 0 5px;
+  border: none;
+  transform: scale(1.5);
+  cursor: pointer;
+  background-color: inherit;
+}
+
+.pages {
+  margin: 1px 5px 0 5px;
+}
+
+.leftArrow {
+  transform: rotate(180deg) scale(1.5);
+  margin-top: 1px;
+}

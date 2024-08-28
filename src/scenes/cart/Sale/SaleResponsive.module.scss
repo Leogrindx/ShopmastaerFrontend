@@ -1,0 +1,26 @@
+.sale {
+  width: 100%;
+}
+
+.total_priceBox {
+  background-color: #fff;
+  padding: 20px 20px;
+}
+
+.total_price {
+  width: 100%;
+}
+
+.discount {
+  background-color: #fff;
+  width: 100%;
+  padding: 20px 0px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  height: 30px;
+  transition: all 0.4s cubic-bezier(0.5, -0.5, 0.5, 2);
+}

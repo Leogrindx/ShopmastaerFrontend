@@ -1,0 +1,69 @@
+@import "../../../config.module.scss";
+.search {
+  width: 100%;
+}
+
+.show {
+  position: fixed;
+  z-index: $ResponsiveSearch;
+  top: 0px;
+  background-color: #fff;
+  height: 100%;
+}
+
+.inputPanel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+}
+
+.input {
+  width: 90%;
+  padding: 10px 5px;
+  font-size: 20px;
+}
+
+.itemBlock {
+  width: 100%;
+}
+
+.trackShow {
+  display: block;
+}
+
+.track {
+  display: none;
+  overflow: scroll;
+  height: 80%;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.items {
+  margin-top: 0px;
+  flex-direction: column;
+}
+
+.name {
+  width: 100%;
+  max-width: 100px;
+}
+
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  padding: 0 20px;
+  border: solid 2px;
+  margin: -10px 15px 0 15px;
+}
+
+.closeButtonPos {
+  position: absolute;
+  right: 0;
+  margin-right: 4%;
+}

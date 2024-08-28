@@ -1,0 +1,17 @@
+.cart {
+  display: flex;
+  background-color: #ececec;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+}
+
+.payment {
+  background-color: #fff;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}

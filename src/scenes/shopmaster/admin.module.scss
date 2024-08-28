@@ -1,0 +1,21 @@
+@import ".../../../../config.module.scss";
+
+.admin {
+  display: flex;
+}
+
+.tools {
+  width: 200px;
+  height: 100vh;
+  background-color: $colorTheme;
+  a {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}

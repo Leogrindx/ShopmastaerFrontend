@@ -1,0 +1,1 @@
+export const cuttings = ["Christmas ornament","Matched","Straight","Flared","Tapered"]

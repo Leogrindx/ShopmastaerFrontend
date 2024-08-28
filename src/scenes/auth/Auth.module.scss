@@ -1,0 +1,94 @@
+
+.logo{
+    margin: 20px 0;
+}
+
+.title_login{
+    margin: -10px 0 20px 0;
+}
+
+.title_registration{
+    margin: 20px 0 30px 0;
+}
+
+.title_forgot{
+    margin: 10px 0 30px 0;
+}
+
+.first_time{
+    margin: 20px 0;
+}
+
+.text{
+    width: 100%;
+    margin-left: 55px;
+}
+
+.input{
+    margin: 20px 10px 0 10px;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.gender {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 15px;
+    p {
+        color: gray;
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+    label {
+        font-size: 18px;
+        margin-left: 10px;
+    }
+    input{
+        box-shadow: none;
+        transform: scale(1.5);
+    }
+}
+
+.check {
+    box-shadow: none;
+    transform: scale(1.5);
+    margin: 0px 5px 5px 0px;
+}
+
+.newsletter{
+    width: 300px;
+    padding-left: 25px;
+    input {
+        margin-right: 10px;
+    }
+}
+
+.margin{
+    margin: 40px 0;
+}
+
+.button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.errorInput{
+    box-shadow: inset 0px 0px 5px red;
+}
+
+.error{
+    width: 300px;
+    height: 16px;
+    word-wrap: break-word;
+    margin: -10px 0 10px 25px;
+    font-size: 14px;
+    color: red;
+}
+

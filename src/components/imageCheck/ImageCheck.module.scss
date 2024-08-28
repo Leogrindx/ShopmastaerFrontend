@@ -1,0 +1,40 @@
+.center {
+    justify-content: center;
+    margin: 20px auto;
+}
+  
+.center_column {
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px auto;
+}
+  
+.row {
+    display: flex;
+    justify-content: center;
+}
+  
+.discounts {
+    width: 100%;
+    background-color: #ffea00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.container_content img {
+    filter: saturate(0%);
+    transition: all 0.5s;
+}
+  
+.container_content:hover img {
+    filter: saturate(100%);
+}
+  
+.container_content:hover button {
+    display: block;
+}
+  
+.container_content:hover {
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
+}

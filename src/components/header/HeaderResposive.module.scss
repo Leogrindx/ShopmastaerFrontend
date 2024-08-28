@@ -1,0 +1,65 @@
+@import "../../config.module.scss";
+
+.firstPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.secondPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hamburger {
+  margin-left: 10px;
+  flex-shrink: 4;
+  cursor: pointer;
+}
+
+.partition {
+  width: 45px;
+  height: 6px;
+  margin: 8px 0;
+  border-radius: 5px;
+  background-color: $colorTheme;
+}
+
+.accrounPanel {
+  display: flex;
+}
+
+.block {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #fff;
+  z-index: $MenuResponsive;
+  translate: -101%;
+  transition: all 0.5s;
+}
+
+.closeBlock {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  position: absolute;
+}
+
+.show {
+  translate: 0%;
+}
+
+.navBar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  position: relative;
+  margin-top: 10px;
+  z-index: $ResponsiveNavbar;
+}

@@ -1,0 +1,89 @@
+.sale {
+  width: 100%;
+  max-width: 340px;
+  min-height: 310px;
+}
+
+.total_priceBox {
+  background-color: #fff;
+  width: 100%;
+  max-width: 300px;
+  padding: 20px 20px;
+}
+
+.total_price {
+  width: 100%;
+  max-width: 300px;
+}
+
+.titleToPay {
+  margin: 10px 0;
+}
+
+.text {
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.boldText {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.fullButton {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.discount {
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  max-width: 300px;
+  padding: 20px 20px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  height: 30px;
+  transition: all 0.4s cubic-bezier(0.5, -0.5, 0.5, 2);
+}
+
+.show {
+  height: 140px;
+}
+
+.textDiscount {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.arrow {
+  transform: rotate(-90deg);
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  width: fit-content;
+  transition: all 0.4s cubic-bezier(0.5, -0.5, 0.5, 2);
+}
+
+.rotate {
+  transform: rotate(90deg);
+}
+
+.input {
+  font-size: 16px;
+  padding: 10px 30px 10px 10px;
+  border: none;
+  box-shadow: inset 0px 0px 5px #000;
+  border-radius: 5px;
+  outline: none;
+  margin-top: 10px;
+}

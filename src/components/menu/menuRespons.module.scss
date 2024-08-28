@@ -1,0 +1,38 @@
+.menu{
+    width: 100%;
+    height: 100%;
+}
+
+.menuElement{
+    width: 97.4%;
+    padding-left: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #acacac;
+    border-bottom: solid 1px #222222;
+}
+
+.block{
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+    transform: translate(-110%);
+    background-color: #fff;
+}
+
+.show{
+    transform: translate(0%);
+}
+
+.back{
+    p{transform: rotate(180deg);}
+    width:fit-content;
+    height: fit-content;
+    margin: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}

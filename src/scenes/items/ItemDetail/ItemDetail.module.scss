@@ -1,0 +1,188 @@
+@import "../../../config.module.scss";
+.item_details {
+  margin: 30px auto;
+}
+
+.name_item_details {
+  width: 300px;
+}
+
+.top_details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.color_details span {
+  font-weight: bold;
+}
+
+.cartButoon {
+  background-color: #e59f67;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 30px 0px;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  overflow: scroll;
+  margin-right: 10px;
+}
+
+.slider::-webkit-scrollbar {
+  cursor: pointer;
+  width: 7px;
+  height: 0px;
+  border-radius: 7px;
+  background-color: #d8d8d8;
+}
+
+.slider::-webkit-scrollbar-thumb {
+  background-color: rgb(135, 135, 135);
+  border-radius: 7px;
+  &:hover {
+    background-color: rgb(2, 2, 2);
+  }
+}
+
+.image_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8%;
+}
+
+.image_button_slider {
+  width: 80px;
+  height: 100px;
+  margin: 0px 10px 20px 10px;
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+
+.image_button_slider:hover {
+  border: 2px solid #000;
+}
+
+.image {
+  cursor: zoom-in;
+  overflow: hidden;
+  width: 500px;
+  height: 700px;
+  img {
+    width: 500px;
+    height: 700px;
+  }
+}
+
+.zoom {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: $ZoomItemsDetails;
+  top: 0px;
+  left: 0px;
+}
+
+.arrow {
+  width: 65px;
+  height: 100px;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.arrow:hover {
+  background-color: #c2c1c1;
+}
+
+.right {
+  transform: rotate(180deg);
+}
+
+.partition {
+  width: 50px;
+  height: 5px;
+  background-color: #000;
+  border-radius: 5px;
+  position: absolute;
+  z-index: $ZoomIButton;
+}
+
+.up {
+  transform: rotate(-45deg);
+  margin-bottom: 33px;
+}
+.down {
+  transform: rotate(45deg);
+  margin-top: 33px;
+}
+
+.selects {
+  display: flex;
+  justify-content: space-between;
+}
+
+.size_details {
+  margin-right: 10px;
+}
+
+.size_select {
+  margin-top: 5px;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  option {
+    font-size: 20px;
+  }
+}
+
+.price_details {
+  margin-top: 10px;
+}
+
+.info_from_item {
+  margin-top: -10px;
+}
+
+.details {
+  margin-bottom: 10px;
+}
+
+.brand {
+  text-transform: capitalize;
+}
+
+.sliderZoom {
+  display: flex;
+  align-items: center;
+}
+
+.imgZoom {
+  width: 100%;
+  height: 100vh;
+}
+
+.closeButton {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: end;
+}
