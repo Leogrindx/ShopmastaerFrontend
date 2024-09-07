@@ -29,16 +29,16 @@ export const useUrl = () => {
   };
 
   const pageParam = seacrhParam.get("page") || "";
-
+  const color = seacrhParam.get("color") || "";
   const routeItemsQuery = () => ({
-    queryKey: [gender, type, undertype, GetSearchParams, pageParam],
+    queryKey: [gender, type, undertype, color, pageParam],
     queryFn: async () =>
-      GetSearchParams.length > 0
+      location.search
         ? ItemService.filter(
             gender || "",
             type || "",
             undertype,
-            location.search,
+            color,
             pageParam
           )
         : ItemService.route(gender || "", type || "", undertype, pageParam),

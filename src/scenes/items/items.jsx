@@ -12,7 +12,7 @@ export const Context = createContext();
 
 const Items = () => {
   const { respon } = useResponsive();
-  const { gender, type, undertype } = useParams();
+  const { type } = useParams();
   const types = [routes.shoes, routes.cloth];
   const filter = useRef([]);
   return (

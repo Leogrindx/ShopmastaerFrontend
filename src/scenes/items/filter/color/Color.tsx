@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import s from "./color.module.scss";
 import g from "../filter.module.scss";
 import r from "../filterResponsive.module.scss";
@@ -10,15 +10,29 @@ import BussinesLogic from "../bisnesFilters";
 import { useResponsive } from "../../../../Hooks/useResponsive";
 import { useUrl } from "../useUrl";
 import { useFilter } from "../useFilter";
+import { useSearchParams } from "react-router-dom";
 const Color: FC<{
   title: string;
   tougle: string;
   setTougle: (tougle: string) => void;
 }> = (props) => {
   const { GetSearchParams, submitFilter } = useUrl();
-  const { generateDataFilter, setState, state, clearDataFilter } = useFilter();
+  const { generateDataFilter, clearDataFilter } = useFilter();
   const { respon } = useResponsive();
-  console.log("colorRender");
+  const [search, setSearch] = useSearchParams();
+  const [state, setSate] = useState(search.getAll("color"));
+  const colorRef = useRef<string[]>();
+  const addValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSate([...state, e.target.value]);
+    } else {
+      setSate(state.filter((f) => f !== e.target.value));
+    }
+  };
+  window.addEventListener("popstate", (event) => {});
+  onpopstate = (event) => {
+    setSate(search.getAll("color"));
+  };
   return (
     <div className={g.filterType}>
       <div
@@ -71,7 +85,7 @@ const Color: FC<{
                 <input
                   id={val}
                   className={classNames(g.checkbox_input, props.title)}
-                  onChange={(e) => generateDataFilter(e, props.title)}
+                  onChange={(e) => addValue(e)}
                   type="checkbox"
                   name="color"
                   value={val}
@@ -135,7 +149,9 @@ const Color: FC<{
             </button>
             <button
               className={g.button}
-              onClick={(e) => submitFilter(props.title, state)}
+              onClick={(e) => {
+                setSearch({ color: state });
+              }}
             >
               submit
             </button>

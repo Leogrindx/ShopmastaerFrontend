@@ -20,9 +20,9 @@ import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
 } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import Item from "./scenes/items/ItemDetail/ItemDetail";
 const queryClient = new QueryClient();
 const App = () => {
   const { auth } = useContext(Context);
@@ -32,9 +32,18 @@ const App = () => {
     }
   }, []);
 
+  const Shopmaster = () => {
+    return (
+      <>
+        <Navigate to="/" />
+      </>
+    );
+  };
+
   const JSXRouter = createBrowserRouter(
     createRoutesFromElements(
       <Route>
+        <Route path={"/shopmaster"} element={<Shopmaster />} />
         <Route path={routes.login} element={<Login />} />
         <Route path={routes.register} element={<Register />} />
         <Route path={routes.forgot_password} element={<Forgot />} />

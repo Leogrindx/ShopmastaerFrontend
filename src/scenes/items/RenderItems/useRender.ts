@@ -21,5 +21,6 @@ export const useRender = () => {
   };
   const { data, isLoading } = useQuery(routeItemsQuery());
   const items = data?.data as ItemResponse[];
+  // console.log("renderRender");
   return { isLoading, items, scrollPages, page };
 };
