@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC } from "react";
 import s from "./color.module.scss";
 import g from "../filter.module.scss";
 import r from "../filterResponsive.module.scss";
@@ -8,31 +8,17 @@ import classNames from "classnames";
 import { colors } from "../../../../config/colors";
 import BussinesLogic from "../bisnesFilters";
 import { useResponsive } from "../../../../Hooks/useResponsive";
-import { useUrl } from "../useUrl";
 import { useFilter } from "../useFilter";
-import { useSearchParams } from "react-router-dom";
 const Color: FC<{
   title: string;
   tougle: string;
   setTougle: (tougle: string) => void;
+  state: string[];
+  setState: (state: string[]) => void;
 }> = (props) => {
-  const { GetSearchParams, submitFilter } = useUrl();
-  const { generateDataFilter, clearDataFilter } = useFilter();
+  const { addDeleteValue, send, search, clearDataFilter } = useFilter();
   const { respon } = useResponsive();
-  const [search, setSearch] = useSearchParams();
-  const [state, setSate] = useState(search.getAll("color"));
-  const colorRef = useRef<string[]>();
-  const addValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setSate([...state, e.target.value]);
-    } else {
-      setSate(state.filter((f) => f !== e.target.value));
-    }
-  };
-  window.addEventListener("popstate", (event) => {});
-  onpopstate = (event) => {
-    setSate(search.getAll("color"));
-  };
+
   return (
     <div className={g.filterType}>
       <div
@@ -52,8 +38,8 @@ const Color: FC<{
         {respon ? (
           <div className={r.showHideButton}>
             <p>{props.title}</p>
-            <p onClick={() => clearDataFilter(props.title)}>
-              {state.length > 0 && state.length}
+            <p onClick={() => clearDataFilter(props.setState)}>
+              {props.state.length > 0 && props.state.length}
             </p>
             <div className={classNames(g.arrow, g.hideArrow)} id="colorArrow">
               <div className={ac.cross}>
@@ -65,8 +51,8 @@ const Color: FC<{
         ) : (
           <>
             <p>{props.title}</p>
-            <p onClick={() => clearDataFilter(props.title)}>
-              {state.length > 0 && state.length}
+            <p onClick={() => clearDataFilter(props.setState)}>
+              {props.state.length > 0 && props.state.length}
             </p>
             <div className={classNames(g.arrow, g.hideArrow)} id="colorArrow">
               <div className={ac.cross}>
@@ -85,11 +71,13 @@ const Color: FC<{
                 <input
                   id={val}
                   className={classNames(g.checkbox_input, props.title)}
-                  onChange={(e) => addValue(e)}
+                  onChange={(e) =>
+                    addDeleteValue(e, props.state, props.setState)
+                  }
                   type="checkbox"
                   name="color"
                   value={val}
-                  checked={BussinesLogic.checked(val, state)}
+                  checked={BussinesLogic.checked(val, props.state)}
                 />
                 <label
                   className={classNames(g.checkbox_label, g.color)}
@@ -109,11 +97,11 @@ const Color: FC<{
               <input
                 id="colored"
                 className={classNames(g.checkbox_input, props.title)}
-                onChange={(e) => generateDataFilter(e, props.title)}
+                onChange={(e) => addDeleteValue(e, props.state, props.setState)}
                 type="checkbox"
                 name="color"
                 value="colored"
-                checked={BussinesLogic.checked("colored", state)}
+                checked={BussinesLogic.checked("colored", props.state)}
               />
               <label className={g.checkbox_label} htmlFor="colored">
                 <div className={s.content}>
@@ -142,7 +130,7 @@ const Color: FC<{
                     g.showPanel,
                     g.showArrow
                   );
-                !respon && clearDataFilter(props.title);
+                !respon && clearDataFilter(props.setState);
               }}
             >
               {respon ? "back" : "clear"}
@@ -150,7 +138,7 @@ const Color: FC<{
             <button
               className={g.button}
               onClick={(e) => {
-                setSearch({ color: state });
+                send(props.title, props.state);
               }}
             >
               submit

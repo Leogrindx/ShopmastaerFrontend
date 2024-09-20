@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { Context } from "../index";
 import Header from "../components/header/Header";
@@ -7,7 +7,6 @@ const Routers = () => {
   const { auth } = useContext(Context);
   if (auth.isAuth) {
     auth.checkAuth();
-    console.log(auth.isAuth);
   }
   return (
     <>

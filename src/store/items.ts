@@ -7,19 +7,6 @@ export const all = async () => {
   } catch (e) {}
 };
 
-export const routeItemsQuery = (
-  gender: string,
-  type: string,
-  underType?: string,
-  filter?: string
-) => ({
-  queryKey: [gender, type, underType, filter],
-  queryFn: async () =>
-    filter
-      ? ItemService.filter(gender, type, underType, filter)
-      : ItemService.route(gender, type, underType),
-});
-
 export const getOne = async (ean: string) => {
   try {
     const res = await ItemService.getOne(ean);

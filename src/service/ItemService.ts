@@ -26,9 +26,9 @@ export default class ItemService {
       return $api.get<ItemResponse[]>(`/items/${gender}/${type}/${underType}`);
     }
     if (page) {
-      return $api.get<ItemResponse[]>(`/items/${gender}/${type}?page=${page}`);
+      const url = `/items/${gender}/${type}?page=${page}`;
+      return $api.get<ItemResponse[]>(url);
     }
-    console.log("route");
     return $api.get<ItemResponse[]>(`/items/${gender}/${type}`);
   }
 
@@ -40,22 +40,14 @@ export default class ItemService {
     page?: string
   ): Promise<AxiosResponse<ItemResponse[]>> {
     if (underType) {
-      if (page) {
-        const url = `/items/${gender}/${type}/${underType}${filter}&page=${page}`;
-        console.log(url);
-        return $api.get<ItemResponse[]>(url);
-      }
-      return $api.get<ItemResponse[]>(
-        `/items/${gender}/${type}/${underType}${filter}`
-      );
+      const url = `/items/${gender}/${type}/${underType}${filter}`;
+      return $api.get<ItemResponse[]>(url);
     }
     if (page) {
-      return $api.get<ItemResponse[]>(
-        `/items/${gender}/${type}${filter}&page=${page}`
-      );
+      const url = `/items/${gender}/${type}${filter}`;
+      return $api.get<ItemResponse[]>(url);
     }
     const url = `/items/${gender}/${type}${filter}`;
-    console.log(url);
     return $api.get<ItemResponse[]>(url);
   }
 }

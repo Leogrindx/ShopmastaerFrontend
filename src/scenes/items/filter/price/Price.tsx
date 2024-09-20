@@ -1,5 +1,4 @@
-import { useState, useEffect, FC } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { FC } from "react";
 import s from "./price.module.scss";
 import g from "../filter.module.scss";
 import r from "../filterResponsive.module.scss";
@@ -7,6 +6,8 @@ import ac from "../ArrrowClose.module.scss";
 import classNames from "classnames";
 import BussinesLogic from "../bisnesFilters";
 import { useResponsive } from "../../../../Hooks/useResponsive";
+import { useFilter } from "../useFilter";
+import { usePrice } from "./usePrice";
 
 const Price: FC<{
   title: string;
@@ -14,54 +15,9 @@ const Price: FC<{
   setTougle: (tougle: string) => void;
 }> = (props) => {
   const { respon } = useResponsive();
-  const [min, setMin] = useState<number>(0);
-  const [max, setMax] = useState<number>(10000);
-  const { gender, filter } = useParams();
-  const navigate = useNavigate();
+  const { right, left, clear, min, max } = usePrice();
+  const { send } = useFilter();
 
-  useEffect(() => {
-    const data = BussinesLogic.parseUrl(filter!, "price");
-    if (data) {
-      setMin(Number(data![0]));
-      BussinesLogic.stylePrice("L", Number(data![0]), Number(data![1]));
-      setMax(Number(data![1]));
-      BussinesLogic.stylePrice("R", Number(data![0]), Number(data![1]));
-    }
-  }, [filter]);
-
-  const submit = () => {
-    // const url = min === 0 && max === 10000 ? '' : `price=${min}_${max}`
-    const url =
-      min === 0 && max === 10000
-        ? ""
-        : BussinesLogic.generateUrl(filter!, "price", [`${min}`, `${max}`]);
-    navigate(`/${gender}/${url}`);
-  };
-
-  const clear = () => {
-    setMin(0);
-    setMax(10000);
-    BussinesLogic.stylePrice("L", 0, 10000);
-    BussinesLogic.stylePrice("R", 0, 10000);
-    const url =
-      min === 0 && max === 10000
-        ? ""
-        : BussinesLogic.generateUrl(filter!, "price", []);
-    navigate(`/${gender}/${url}`);
-  };
-
-  const left = (value: number) => {
-    if (value <= max) {
-      setMin(value);
-      BussinesLogic.stylePrice("L", value, max);
-    }
-  };
-  const right = (value: number) => {
-    if (min <= value) {
-      setMax(value);
-      BussinesLogic.stylePrice("R", min, value);
-    }
-  };
   return (
     <div className={g.filterType}>
       <div
@@ -95,7 +51,7 @@ const Price: FC<{
         ) : (
           <>
             <p>{props.title}</p>
-            <p>{min !== 0 || (max !== 10000 && 1)}</p>
+            <p>{min !== 0 || max !== 10000 ? 1 : ""}</p>
             <div
               className={classNames(g.arrow, g.hideArrow)}
               id={`${props.title}Arrow`}
@@ -189,7 +145,10 @@ const Price: FC<{
             >
               {respon ? "back" : "clear"}
             </button>
-            <button className={g.button} onClick={(e) => submit()}>
+            <button
+              className={g.button}
+              onClick={(e) => send(props.title, [`${min}`, `${max}`])}
+            >
               submit
             </button>
           </div>

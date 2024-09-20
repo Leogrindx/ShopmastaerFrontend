@@ -29,19 +29,18 @@ export const useUrl = () => {
   };
 
   const pageParam = seacrhParam.get("page") || "";
-  const color = seacrhParam.get("color") || "";
   const routeItemsQuery = () => ({
-    queryKey: [gender, type, undertype, color, pageParam],
+    queryKey: [gender, type, undertype, location.search, pageParam],
     queryFn: async () =>
       location.search
         ? ItemService.filter(
             gender || "",
             type || "",
             undertype,
-            color,
+            location.search,
             pageParam
           )
-        : ItemService.route(gender || "", type || "", undertype, pageParam),
+        : ItemService.route(gender || "", type || "", undertype),
   });
 
   const submitFilter = (filterType: string, state: string[]) => {

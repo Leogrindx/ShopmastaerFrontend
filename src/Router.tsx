@@ -11,7 +11,6 @@ import Items from "./scenes/items/items";
 import ItemDetail from "./scenes/items/ItemDetail/ItemDetail";
 import Forgot from "./scenes/auth/forgotPassword/Forgot";
 import Cart from "./scenes/cart/Cart";
-import Shopmaster from "./scenes/shopmaster/Shopmaster";
 import Create from "./scenes/shopmaster/create/Create";
 import { routes } from "./config/routes";
 import s from "./Index.module.scss";

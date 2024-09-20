@@ -4,9 +4,6 @@ import { ItemResponse } from "../../../models/ItemResponse";
 import { useUrl } from "../filter/useUrl";
 export const useRender = () => {
   const { routeItemsQuery } = useUrl();
-  const [search, setSearch] = useSearchParams();
-  const { gender, type, undertype } = useParams();
-  const location = useLocation();
   const [page, setPage] = useSearchParams({ page: "1" });
   const scrollPages = (state: string) => {
     const pageNum = Number(page.get("page"));
@@ -19,8 +16,8 @@ export const useRender = () => {
       setPage({ page: `${pageNum + 1}` });
     }
   };
-  const { data, isLoading } = useQuery(routeItemsQuery());
+  const { data, isLoading, error } = useQuery(routeItemsQuery());
   const items = data?.data as ItemResponse[];
   // console.log("renderRender");
-  return { isLoading, items, scrollPages, page };
+  return { isLoading, error, items, scrollPages, page };
 };

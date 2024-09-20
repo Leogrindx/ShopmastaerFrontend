@@ -22,7 +22,7 @@ const Menu = () => {
       {!respon === true ? (
         <div className={s.menu}>
           <div className={s.types}>
-            <Link to={`/${gender}/${routes.shoes}`}>
+            <Link to={`/${gender}/${routes.shoes}`} className="clearFilter">
               <div
                 onMouseEnter={() => sortUnderType(gender, "shoes")}
                 className={s.type}
@@ -30,7 +30,7 @@ const Menu = () => {
                 Shoes
               </div>
             </Link>
-            <Link to={`/${gender}/${routes.cloth}`}>
+            <Link to={`/${gender}/${routes.cloth}`} className="clearFilter">
               <div
                 onMouseEnter={() => sortUnderType(gender, "cloth")}
                 className={s.type}
@@ -46,7 +46,12 @@ const Menu = () => {
                 style={!respon && { width: 200, height: 50 }}
                 className={s.menuElement}
               >
-                <Link to={`/${gender}/${type}/${correctLink(e)}`}>{e}</Link>
+                <Link
+                  to={`/${gender}/${type}/${correctLink(e)}`}
+                  className="clearFilter"
+                >
+                  {e}
+                </Link>
               </div>
             ))}
           </div>

@@ -4,19 +4,29 @@ import r from "./filterResponsive.module.scss";
 import Price from "./price/Price";
 import Color from "./color/Color";
 import TextFilter from "./text/TextFilter";
-import { Context } from "../items";
 import { brands } from "../../../config/brand";
 import { materials } from "../../../config/materials";
 import { fashions } from "../../../config/fashions";
 import { cuttings } from "../../../config/cutting";
 import { useResponsive } from "../../../Hooks/useResponsive";
-import { useUrl } from "./useUrl";
+import { useFilter } from "./useFilter";
 import classNames from "classnames";
 
 const Filter = () => {
   const [tougle, setTougle] = useState<string>("");
   const [closeOpen, setCloseOpen] = useState<boolean>(false);
-
+  const {
+    color,
+    brand,
+    material,
+    fashion,
+    cutting,
+    setColor,
+    setBrand,
+    setMaterial,
+    setFashion,
+    setCutting,
+  } = useFilter();
   const { respon } = useResponsive();
   return (
     <>
@@ -40,31 +50,45 @@ const Filter = () => {
       >
         <div>
           <Price title={"price"} tougle={tougle} setTougle={setTougle} />
-          <Color title={"color"} tougle={tougle} setTougle={setTougle} />
+          <Color
+            title={"color"}
+            tougle={tougle}
+            setTougle={setTougle}
+            state={color}
+            setState={setColor}
+          />
           <TextFilter
             title={"brand"}
             value={brands}
             searchWindow={true}
             tougle={tougle}
             setTougle={setTougle}
+            state={brand}
+            setState={setBrand}
           />
           <TextFilter
             title={"material"}
             value={materials}
             tougle={tougle}
             setTougle={setTougle}
+            state={material}
+            setState={setMaterial}
           />
           <TextFilter
             title={"fashion"}
             value={fashions}
             tougle={tougle}
             setTougle={setTougle}
+            state={fashion}
+            setState={setFashion}
           />
           <TextFilter
             title={"cutting"}
             value={cuttings}
             tougle={tougle}
             setTougle={setTougle}
+            state={cutting}
+            setState={setCutting}
           />
         </div>
         {respon && (

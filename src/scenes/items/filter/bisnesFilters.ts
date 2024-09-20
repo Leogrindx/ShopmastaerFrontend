@@ -139,14 +139,6 @@ class BussinesLogicFilter {
 
 export default new BussinesLogicFilter();
 
-export interface FiltersDate {
-  title: string;
-  value: string[];
-  searchWindow?: boolean;
-  tougle: string;
-  setTougle: (tougle: string) => void;
-}
-
 export interface State {
   filter: string;
   value: string[];

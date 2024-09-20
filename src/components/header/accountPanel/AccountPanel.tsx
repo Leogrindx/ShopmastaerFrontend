@@ -21,6 +21,9 @@ const AccountPanel: FC = () => {
           {auth.isAuth ? (
             <>
               <div className={s.img_block}>
+                <h1>
+                  Hello, {auth.user.first_name} {auth.user.last_name}
+                </h1>
                 <img
                   src={`${process.env.PUBLIC_URL}/img/login.png`}
                   alt=""
@@ -80,6 +83,9 @@ const AccountPanel: FC = () => {
           <div className={s.panel}>
             {auth.isAuth ? (
               <div className={s.Account_panel}>
+                <h1>
+                  Hello, {auth.user.first_name} {auth.user.last_name}
+                </h1>
                 <img
                   className={s.under_developing}
                   src={`${process.env.PUBLIC_URL}/img/under_construction.png`}
@@ -88,7 +94,11 @@ const AccountPanel: FC = () => {
                 <div className={s.partition_user}></div>
                 <p className={s.black}>change password</p>
                 <div className={s.partition_user}></div>
-                <button onClick={() => auth.logout()} className={g.button}>
+                <button
+                  onClick={() => auth.logout()}
+                  style={{ margin: 20 }}
+                  className={g.button}
+                >
                   Log Out
                 </button>
               </div>

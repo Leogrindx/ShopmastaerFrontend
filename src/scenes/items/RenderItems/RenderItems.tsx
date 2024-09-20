@@ -9,7 +9,7 @@ import { useResponsive } from "../../../Hooks/useResponsive";
 import { useRender } from "./useRender";
 const RenderItems: FC = () => {
   const { respon } = useResponsive();
-  const { isLoading, items, scrollPages, page } = useRender();
+  const { isLoading, items, scrollPages, page, error } = useRender();
   if (isLoading) {
     return (
       <>
@@ -17,7 +17,6 @@ const RenderItems: FC = () => {
       </>
     );
   }
-
   return (
     <div
       className={s.items}
@@ -25,58 +24,62 @@ const RenderItems: FC = () => {
     >
       <>
         <div className={s.view_items}>
-          {items.length !== 0 ? (
-            items.map((e, i) => (
-              <div className={s.view_item} key={i}>
-                <div>
-                  <Cart sizes={e.size} keyx={i} itemID={e.id} />
-                </div>
-                <div className={s.item}>
-                  <Link to={`/item/${e.ean}`}>
-                    <div className={s.img}>
-                      <div className={s.articl_items}>
-                        <img
-                          className={s.img}
-                          src={`${process.env.PUBLIC_URL}${
-                            e.img.filter((e) => e.search("front") > -1)[0]
-                          }`}
-                          alt="item"
-                        />
-                        <div className={s.got_to}>
-                          <div className={s.btn_item}>go to</div>
-                        </div>
-                      </div>
-                      <div className={s.add_item_in_basket}></div>
+          {items && (
+            <>
+              {items.length !== 0 ? (
+                items.map((e, i) => (
+                  <div className={s.view_item} key={i}>
+                    <div>
+                      <Cart sizes={e.size} keyx={i} itemID={e.id} />
                     </div>
-                    <div className={s.item_text}>
-                      <div className={s.item_textColumn}>
-                        <div className={s.item_name}>
-                          <div className={s.brand}>
-                            <p>{e.brand}</p>
+                    <div className={s.item}>
+                      <Link to={`/item/${e.ean}`}>
+                        <div className={s.img}>
+                          <div className={s.articl_items}>
+                            <img
+                              className={s.img}
+                              src={`${process.env.PUBLIC_URL}${
+                                e.img.filter((e) => e.search("front") > -1)[0]
+                              }`}
+                              alt="item"
+                            />
+                            <div className={s.got_to}>
+                              <div className={s.btn_item}>go to</div>
+                            </div>
                           </div>
-                          <div className={s.name}>
-                            <p>{e.name}</p>
+                          <div className={s.add_item_in_basket}></div>
+                        </div>
+                        <div className={s.item_text}>
+                          <div className={s.item_textColumn}>
+                            <div className={s.item_name}>
+                              <div className={s.brand}>
+                                <p>{e.brand}</p>
+                              </div>
+                              <div className={s.name}>
+                                <p>{e.name}</p>
+                              </div>
+                            </div>
+                            <div className={s.item_price}>
+                              <p>{e.price},</p>
+                              <p>{e.cent ? e.cent : "00"}</p>
+                              <p className={s.currency}>zl</p>
+                            </div>
+                          </div>
+                          <div className={s.item_size}>
+                            <p>size:</p>
+                            {e.size.map((e) => `${e}, `)}
                           </div>
                         </div>
-                        <div className={s.item_price}>
-                          <p>{e.price},</p>
-                          <p>{e.cent ? e.cent : "00"}</p>
-                          <p className={s.currency}>zl</p>
-                        </div>
-                      </div>
-                      <div className={s.item_size}>
-                        <p>size:</p>
-                        {e.size.map((e) => `${e}, `)}
-                      </div>
+                      </Link>
                     </div>
-                  </Link>
+                  </div>
+                ))
+              ) : (
+                <div className={s.notItems}>
+                  <h1>There is no such product</h1>
                 </div>
-              </div>
-            ))
-          ) : (
-            <div className={s.notItems}>
-              <h1>There is no such product</h1>
-            </div>
+              )}
+            </>
           )}
         </div>
         <div className={s.trigger}>

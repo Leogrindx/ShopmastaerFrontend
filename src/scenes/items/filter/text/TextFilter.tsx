@@ -4,20 +4,19 @@ import r from "../filterResponsive.module.scss";
 import classNames from "classnames";
 import i from "../../../../Index.module.scss";
 import ac from "../ArrrowClose.module.scss";
-import BussinesLogic, { FiltersDate } from "../bisnesFilters";
+import BussinesLogic from "../bisnesFilters";
 import { useResponsive } from "../../../../Hooks/useResponsive";
-import { useFilter } from "../useFilter";
+import { FiltersDate, useFilter } from "../useFilter";
 import { useUrl } from "../useUrl";
 
 const TextFilter: FC<FiltersDate> = (props) => {
   const { submitFilter } = useUrl();
-  const { generateDataFilter, state, clearDataFilter } = useFilter();
+  const { addDeleteValue, clearDataFilter, send } = useFilter();
   const { respon } = useResponsive();
   const [items, setItems] = useState(props.value);
   const [input, setInput] = useState<string>("");
-  const [checkBox, setCheckBox] = useState(false);
   const [position, setPosition] = useState<boolean>(false);
-  const search = (e: any) => {
+  const searchInput = (e: any) => {
     setInput(e.target.value);
     setItems(
       props.value.filter(
@@ -27,7 +26,7 @@ const TextFilter: FC<FiltersDate> = (props) => {
   };
 
   return (
-    <div className={g.filterType}>
+    <div className={g.filterType} id={props.title}>
       <div
         className={respon ? r.showHidePanel : g.showHidePanel}
         onClick={(e) => {
@@ -46,8 +45,8 @@ const TextFilter: FC<FiltersDate> = (props) => {
         {respon ? (
           <div className={r.showHideButton}>
             <p>{props.title}</p>
-            <p onClick={() => clearDataFilter(props.title)}>
-              {state.length > 0 && state.length}
+            <p onClick={() => clearDataFilter(props.setState)}>
+              {props.state.length > 0 && props.state.length}
             </p>
             <div className={classNames(g.arrow, g.hideArrow)} id="colorArrow">
               <div className={ac.cross}>
@@ -59,8 +58,8 @@ const TextFilter: FC<FiltersDate> = (props) => {
         ) : (
           <>
             <p>{props.title}</p>
-            <p onClick={() => clearDataFilter(props.title)}>
-              {state.length > 0 && state.length}
+            <p onClick={() => clearDataFilter(props.setState)}>
+              {props.state.length > 0 && props.state.length}
             </p>
             <div className={classNames(g.arrow, g.hideArrow)} id="colorArrow">
               <div className={ac.cross}>
@@ -79,7 +78,7 @@ const TextFilter: FC<FiltersDate> = (props) => {
                 className={i.input}
                 type="text"
                 placeholder="Search"
-                onChange={(e) => search(e)}
+                onChange={(e) => searchInput(e)}
                 value={input}
                 style={respon ? {} : { width: "120px", marginBottom: "20px" }}
               />
@@ -92,12 +91,14 @@ const TextFilter: FC<FiltersDate> = (props) => {
                   id={val}
                   className={classNames(g.checkbox_input, props.title)}
                   onChange={(e) => {
-                    generateDataFilter(e, props.title);
-                    setCheckBox(!checkBox);
+                    addDeleteValue(e, props.state, props.setState);
                   }}
                   type="checkbox"
-                  value={val}
-                  checked={BussinesLogic.checked(val, state)}
+                  value={val.toLocaleLowerCase().replaceAll(" ", "_")}
+                  checked={BussinesLogic.checked(
+                    val.toLocaleLowerCase(),
+                    props.state
+                  )}
                 />
                 <label
                   className={classNames(g.checkbox_label, g.color)}
@@ -137,14 +138,14 @@ const TextFilter: FC<FiltersDate> = (props) => {
                   g.showPanel,
                   g.showArrow
                 );
-                !respon && clearDataFilter(props.title);
+                !respon && clearDataFilter(props.setState);
               }}
             >
               {respon ? "back" : "clear"}
             </button>
             <button
               className={g.button}
-              onClick={(e) => submitFilter(props.title, state)}
+              onClick={(e) => send(props.title, props.state)}
             >
               submito
             </button>
