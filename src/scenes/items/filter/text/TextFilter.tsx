@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, memo } from "react";
+import { FC, useState, memo } from "react";
 import g from "../filter.module.scss";
 import r from "../filterResponsive.module.scss";
 import classNames from "classnames";
@@ -7,10 +7,8 @@ import ac from "../ArrrowClose.module.scss";
 import BussinesLogic from "../bisnesFilters";
 import { useResponsive } from "../../../../Hooks/useResponsive";
 import { FiltersDate, useFilter } from "../useFilter";
-import { useUrl } from "../useUrl";
 
 const TextFilter: FC<FiltersDate> = (props) => {
-  const { submitFilter } = useUrl();
   const { addDeleteValue, clearDataFilter, send } = useFilter();
   const { respon } = useResponsive();
   const [items, setItems] = useState(props.value);
@@ -94,7 +92,7 @@ const TextFilter: FC<FiltersDate> = (props) => {
                     addDeleteValue(e, props.state, props.setState);
                   }}
                   type="checkbox"
-                  value={val.toLocaleLowerCase().replaceAll(" ", "_")}
+                  value={val}
                   checked={BussinesLogic.checked(
                     val.toLocaleLowerCase(),
                     props.state
@@ -147,7 +145,7 @@ const TextFilter: FC<FiltersDate> = (props) => {
               className={g.button}
               onClick={(e) => send(props.title, props.state)}
             >
-              submito
+              submit
             </button>
           </div>
         </div>

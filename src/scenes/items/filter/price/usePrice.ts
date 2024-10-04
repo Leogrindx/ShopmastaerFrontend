@@ -32,46 +32,25 @@ export const usePrice = () => {
   }, [location.search]);
 
   const percent = (val: number) => {
-    return Math.round(((val - 0) / (10000 - 0)) * 100);
-  };
-
-  const stylePrice = (side: string, min: number, max: number) => {
-    const range = document.getElementById("range");
-    const thumb = document.getElementById(`thumb${side}`);
-    if (side === "L") {
-      thumb?.setAttribute("style", `left: ${percent(min)}%;`);
-      range?.setAttribute(
-        "style",
-        `left: ${percent(min)}%; right: ${100 - percent(max)}%`
-      );
-    }
-    if (side === "R")
-      thumb?.setAttribute("style", `right: ${100 - percent(max)}%`);
-    range?.setAttribute(
-      "style",
-      `left: ${percent(min)}%; right: ${100 - percent(max)}%`
-    );
+    const res = Math.round(((val - 0) / (10000 - 0)) * 100);
+    return res;
   };
 
   const left = (value: number) => {
     if (value <= max) {
       setMin(value);
-      stylePrice("L", value, max);
     }
   };
   const right = (value: number) => {
     if (min <= value) {
       setMax(value);
-      stylePrice("R", min, value);
     }
   };
 
   const clear = () => {
     setMin(0);
     setMax(10000);
-    stylePrice("L", 0, 10000);
-    stylePrice("R", 0, 10000);
     navigate(`/${gender}/${type}/${undertype}`);
   };
-  return { clear, left, right, min, max };
+  return { clear, left, right, percent, min, max };
 };

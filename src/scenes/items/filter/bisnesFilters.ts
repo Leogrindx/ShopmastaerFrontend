@@ -1,57 +1,4 @@
 class BussinesLogicFilter {
-  parseUrl(url: string, filter: string) {
-    /* "-" - divides filter, "=" parametr & value, "," divides value*/
-    if (url) {
-      const seacrh: any = url
-        .split("-")
-        .find((e) => e.split("=")[0] === filter);
-      if (seacrh) {
-        const data: string[] = seacrh.split("=")[1].split(",");
-        return data.map((e) => e.replaceAll("_", " "));
-      }
-    }
-  }
-
-  generateDate(e: any, state: string[], val: string) {
-    if (e.target.checked) {
-      return [...state, val];
-    } else {
-      return state.filter((e) => e !== val);
-    }
-  }
-
-  generateUrl(url: string, filter: string, value: string[]) {
-    if (url) {
-      const urlParam: string[] = url.split("-");
-      const index = urlParam.findIndex((e) => e.split("=")[0] === filter);
-      if (value.length !== 0) {
-        if (index > -1) {
-          urlParam[index] = `${filter}=${value
-            .map((e) => e.toLowerCase())
-            .join(",")}`;
-          return urlParam.join("-");
-        } else {
-          return `${url}-${filter}=${value
-            .map((e) => e.toLowerCase())
-            .join(",")}`;
-        }
-      } else {
-        if (index > -1) {
-          urlParam.splice(index, 1);
-          return urlParam.join("-");
-        } else {
-          return url;
-        }
-      }
-    } else {
-      if (value.length > 0) {
-        return `${filter}=${value.map((e) => e.toLowerCase()).join(",")}`;
-      } else {
-        return "";
-      }
-    }
-  }
-
   checked(val: string, state: string[]) {
     const result = state.find((e) => e.toLowerCase() === val.toLowerCase());
     return result ? true : false;
@@ -117,23 +64,6 @@ class BussinesLogicFilter {
         panel[i].classList.add(hidePanel);
       }
     }
-  }
-
-  percent(val: number) {
-    return Math.round(((val - 0) / (10000 - 0)) * 100);
-  }
-
-  stylePrice(side: string, min: number, max: number) {
-    const range = document.getElementById("range");
-    const thumb = document.getElementById(`thumb${side}`);
-    if (side === "L")
-      thumb?.setAttribute("style", `left: ${this.percent(min)}%;`);
-    if (side === "R")
-      thumb?.setAttribute("style", `right: ${100 - this.percent(max)}%`);
-    range?.setAttribute(
-      "style",
-      `left: ${this.percent(min)}%; right: ${100 - this.percent(max)}%`
-    );
   }
 }
 

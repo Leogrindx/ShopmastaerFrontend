@@ -15,7 +15,7 @@ const Price: FC<{
   setTougle: (tougle: string) => void;
 }> = (props) => {
   const { respon } = useResponsive();
-  const { right, left, clear, min, max } = usePrice();
+  const { percent, right, left, clear, min, max } = usePrice();
   const { send } = useFilter();
 
   return (
@@ -114,14 +114,17 @@ const Price: FC<{
 
                 <div className={s.slider_filter}>
                   <div className={s.track}></div>
-                  <div className={s.range} id="range"></div>
+                  <div
+                    className={s.range}
+                    style={{ left: percent(min), right: 100 - percent(max) }}
+                  ></div>
                   <div
                     className={classNames(s.thumb, s.left)}
-                    id="thumbL"
+                    style={{ left: percent(min) }}
                   ></div>
                   <div
                     className={classNames(s.thumb, s.right)}
-                    id="thumbR"
+                    style={{ right: 100 - percent(max) }}
                   ></div>
                 </div>
               </div>

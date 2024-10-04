@@ -52,9 +52,16 @@ export const useFilter = () => {
     setState: (state: string[]) => void
   ) => {
     if (e.target.checked) {
-      setState([...state, e.target.value.toLocaleLowerCase()]);
+      setState([
+        ...state,
+        e.target.value.toLocaleLowerCase().replaceAll(" ", "_"),
+      ]);
     } else {
-      setState(state.filter((f) => f !== e.target.value.toLocaleLowerCase()));
+      setState(
+        state.filter(
+          (f) => f !== e.target.value.toLocaleLowerCase().replaceAll(" ", "_")
+        )
+      );
     }
   };
   const send = (title: string, state: string[]) => {
