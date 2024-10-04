@@ -73,7 +73,7 @@ const TextFilter: FC<FiltersDate> = (props) => {
           {props.searchWindow && (
             <div className={respon ? r.search : g.search}>
               <input
-                className={i.input}
+                className={classNames(i.input, g.input)}
                 type="text"
                 placeholder="Search"
                 onChange={(e) => searchInput(e)}
