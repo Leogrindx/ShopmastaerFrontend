@@ -6,7 +6,7 @@ const API_URL_LOCAL = "http://localhost/api/";
 
 const $api = axios.create({
   withCredentials: true,
-  baseURL: API_URL_LOCAL,
+  baseURL: API_URL,
 });
 
 $api.interceptors.request.use((config) => {
