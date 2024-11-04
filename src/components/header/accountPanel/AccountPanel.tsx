@@ -21,9 +21,6 @@ const AccountPanel: FC = () => {
           {auth.isAuth ? (
             <>
               <div className={s.img_block}>
-                <h1>
-                  Hello, {auth.user.first_name} {auth.user.last_name}
-                </h1>
                 <img
                   src={`${process.env.PUBLIC_URL}/img/login.png`}
                   alt=""
@@ -43,6 +40,9 @@ const AccountPanel: FC = () => {
                     </button>
                   </div>
                   <div className={r.under_developing}>
+                    <h1>
+                      Hello, {auth.user.first_name} {auth.user.last_name}
+                    </h1>
                     <img
                       className={s.under_developing}
                       src={`${process.env.PUBLIC_URL}/img/under_construction.png`}

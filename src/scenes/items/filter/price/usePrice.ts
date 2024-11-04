@@ -50,7 +50,7 @@ export const usePrice = () => {
   const clear = () => {
     setMin(0);
     setMax(10000);
-    navigate(`/${gender}/${type}/${undertype}`);
+    navigate(`/${gender}/${type}/${undertype ? undertype : ""}`);
   };
   return { clear, left, right, percent, min, max };
 };

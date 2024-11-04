@@ -9,7 +9,7 @@ import { useResponsive } from "../../../Hooks/useResponsive";
 import { useRender } from "./useRender";
 const RenderItems: FC = () => {
   const { respon } = useResponsive();
-  const { isLoading, items, scrollPages, page, error } = useRender();
+  const { isLoading, items, scrollPages, page, disbledNext } = useRender();
   if (isLoading) {
     return (
       <>
@@ -94,7 +94,11 @@ const RenderItems: FC = () => {
           </div>
           <div className={s.pages}>{page.get("page")}</div>
           <div className={s.next}>
-            <button onClick={(e) => scrollPages("next")} className={s.arrow}>
+            <button
+              onClick={(e) => scrollPages("next")}
+              disabled={items.length > 99 ? false : true}
+              className={s.arrow}
+            >
               ➤
             </button>
           </div>

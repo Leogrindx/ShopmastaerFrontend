@@ -29,6 +29,7 @@ export default class ItemService {
       const url = `/items/${gender}/${type}?page=${page}`;
       return $api.get<ItemResponse[]>(url);
     }
+
     return $api.get<ItemResponse[]>(`/items/${gender}/${type}`);
   }
 

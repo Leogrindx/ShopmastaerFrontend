@@ -6,8 +6,8 @@ import ac from "../ArrrowClose.module.scss";
 import classNames from "classnames";
 import BussinesLogic from "../bisnesFilters";
 import { useResponsive } from "../../../../Hooks/useResponsive";
-import { useFilter } from "../useFilter";
 import { usePrice } from "./usePrice";
+import { useUrl } from "../useUrl";
 
 const Price: FC<{
   title: string;
@@ -16,7 +16,7 @@ const Price: FC<{
 }> = (props) => {
   const { respon } = useResponsive();
   const { percent, right, left, clear, min, max } = usePrice();
-  const { send } = useFilter();
+  const { send } = useUrl();
 
   return (
     <div className={g.filterType}>

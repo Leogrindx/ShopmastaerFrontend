@@ -1,4 +1,4 @@
-import { FC, useState, memo } from "react";
+import { FC, useState } from "react";
 import g from "../filter.module.scss";
 import r from "../filterResponsive.module.scss";
 import classNames from "classnames";
@@ -7,9 +7,11 @@ import ac from "../ArrrowClose.module.scss";
 import BussinesLogic from "../bisnesFilters";
 import { useResponsive } from "../../../../Hooks/useResponsive";
 import { FiltersDate, useFilter } from "../useFilter";
+import { useUrl } from "../useUrl";
 
 const TextFilter: FC<FiltersDate> = (props) => {
-  const { addDeleteValue, clearDataFilter, send } = useFilter();
+  const { addDeleteValue } = useFilter();
+  const { clearDataFilter, send } = useUrl();
   const { respon } = useResponsive();
   const [items, setItems] = useState(props.value);
   const [input, setInput] = useState<string>("");
@@ -154,4 +156,4 @@ const TextFilter: FC<FiltersDate> = (props) => {
   );
 };
 
-export default memo(TextFilter);
+export default TextFilter;

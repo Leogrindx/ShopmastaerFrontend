@@ -11,6 +11,7 @@ import { cuttings } from "../../../config/cutting";
 import { useResponsive } from "../../../Hooks/useResponsive";
 import { useFilter } from "./useFilter";
 import classNames from "classnames";
+import { useUrl } from "./useUrl";
 
 const Filter = () => {
   const [tougle, setTougle] = useState<string>("");
@@ -26,7 +27,7 @@ const Filter = () => {
     setMaterial,
     setFashion,
     setCutting,
-  } = useFilter();
+  } = useUrl();
   const { respon } = useResponsive();
   return (
     <>

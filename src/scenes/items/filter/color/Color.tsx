@@ -9,6 +9,7 @@ import { colors } from "../../../../config/colors";
 import BussinesLogic from "../bisnesFilters";
 import { useResponsive } from "../../../../Hooks/useResponsive";
 import { useFilter } from "../useFilter";
+import { useUrl } from "../useUrl";
 const Color: FC<{
   title: string;
   tougle: string;
@@ -16,7 +17,8 @@ const Color: FC<{
   state: string[];
   setState: (state: string[]) => void;
 }> = (props) => {
-  const { addDeleteValue, send, search, clearDataFilter } = useFilter();
+  const { addDeleteValue } = useFilter();
+  const { send, clearDataFilter } = useUrl();
   const { respon } = useResponsive();
 
   return (
