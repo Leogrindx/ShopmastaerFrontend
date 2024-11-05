@@ -4,10 +4,10 @@ import g from "../filter.module.scss";
 import r from "../filterResponsive.module.scss";
 import ac from "../ArrrowClose.module.scss";
 import classNames from "classnames";
-import BussinesLogic from "../bisnesFilters";
 import { useResponsive } from "../../../../Hooks/useResponsive";
 import { usePrice } from "./usePrice";
 import { useUrl } from "../useUrl";
+import { useFilter } from "../useFilter";
 
 const Price: FC<{
   title: string;
@@ -15,6 +15,7 @@ const Price: FC<{
   setTougle: (tougle: string) => void;
 }> = (props) => {
   const { respon } = useResponsive();
+  const { showHide } = useFilter();
   const { percent, right, left, clear, min, max } = usePrice();
   const { send } = useUrl();
 
@@ -23,7 +24,7 @@ const Price: FC<{
       <div
         className={respon ? r.showHidePanel : g.showHidePanel}
         onClick={(e) =>
-          BussinesLogic.showHide(
+          showHide(
             props.title,
             g.arrow,
             g.hideArrow,
@@ -134,7 +135,7 @@ const Price: FC<{
             <button
               className={g.button}
               onClick={(e) => {
-                BussinesLogic.showHide(
+                showHide(
                   props.title,
                   g.arrow,
                   g.hideArrow,

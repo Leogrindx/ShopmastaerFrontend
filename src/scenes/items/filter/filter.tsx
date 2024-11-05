@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import s from "./filter.module.scss";
 import r from "./filterResponsive.module.scss";
 import Price from "./price/Price";
@@ -9,13 +9,15 @@ import { materials } from "../../../config/materials";
 import { fashions } from "../../../config/fashions";
 import { cuttings } from "../../../config/cutting";
 import { useResponsive } from "../../../Hooks/useResponsive";
-import { useFilter } from "./useFilter";
 import classNames from "classnames";
 import { useUrl } from "./useUrl";
 
 const Filter = () => {
   const [tougle, setTougle] = useState<string>("");
   const [closeOpen, setCloseOpen] = useState<boolean>(false);
+  useEffect(() => {
+    document.body.style.overflow = closeOpen ? "hidden" : "auto";
+  }, [closeOpen]);
   const {
     color,
     brand,

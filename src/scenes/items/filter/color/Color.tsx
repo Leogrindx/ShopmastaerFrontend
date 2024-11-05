@@ -6,7 +6,6 @@ import ac from "../ArrrowClose.module.scss";
 
 import classNames from "classnames";
 import { colors } from "../../../../config/colors";
-import BussinesLogic from "../bisnesFilters";
 import { useResponsive } from "../../../../Hooks/useResponsive";
 import { useFilter } from "../useFilter";
 import { useUrl } from "../useUrl";
@@ -17,7 +16,7 @@ const Color: FC<{
   state: string[];
   setState: (state: string[]) => void;
 }> = (props) => {
-  const { addDeleteValue } = useFilter();
+  const { addDeleteValue, showHide, checked } = useFilter();
   const { send, clearDataFilter } = useUrl();
   const { respon } = useResponsive();
 
@@ -26,7 +25,7 @@ const Color: FC<{
       <div
         className={respon ? r.showHidePanel : g.showHidePanel}
         onClick={(e) =>
-          BussinesLogic.showHide(
+          showHide(
             props.title,
             g.arrow,
             g.hideArrow,
@@ -79,7 +78,7 @@ const Color: FC<{
                   type="checkbox"
                   name="color"
                   value={val}
-                  checked={BussinesLogic.checked(val, props.state)}
+                  checked={checked(val, props.state)}
                 />
                 <label
                   className={classNames(g.checkbox_label, g.color)}
@@ -103,7 +102,7 @@ const Color: FC<{
                 type="checkbox"
                 name="color"
                 value="colored"
-                checked={BussinesLogic.checked("colored", props.state)}
+                checked={checked("colored", props.state)}
               />
               <label className={g.checkbox_label} htmlFor="colored">
                 <div className={s.content}>
@@ -123,7 +122,7 @@ const Color: FC<{
               className={g.button}
               onClick={(e) => {
                 respon &&
-                  BussinesLogic.showHide(
+                  showHide(
                     props.title,
                     g.arrow,
                     g.hideArrow,

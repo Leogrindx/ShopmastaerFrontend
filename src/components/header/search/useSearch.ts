@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { ItemResponse } from "../../../models/ItemResponse";
 import { API_URL } from "../../../http/Htttp";
@@ -8,6 +8,9 @@ export const useLogicSearch = () => {
   const [value, setValue] = useState<string>("");
   const [load, setLoad] = useState<boolean>(false);
   const [input, setInput] = useState(false);
+  useEffect(() => {
+    document.body.style.overflow = input ? "hidden" : "auto";
+  }, [input]);
   const open = (e: any, className: string, responsive: boolean) => {
     if (responsive) {
       setInput(true);

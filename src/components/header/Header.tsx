@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { routes } from "../../config/routes";
 import s from "./Header.module.scss";
@@ -13,6 +13,9 @@ import classNames from "classnames";
 const Header: FC = () => {
   const { respon } = useResponsive();
   const [hamburger, setHamburger] = useState<Boolean>(false);
+  useEffect(() => {
+    document.body.style.overflow = hamburger ? "hidden" : "auto";
+  }, [hamburger]);
   return (
     <>
       {respon ? (

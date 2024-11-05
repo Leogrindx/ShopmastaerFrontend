@@ -4,13 +4,13 @@ import r from "../filterResponsive.module.scss";
 import classNames from "classnames";
 import i from "../../../../Index.module.scss";
 import ac from "../ArrrowClose.module.scss";
-import BussinesLogic from "../bisnesFilters";
 import { useResponsive } from "../../../../Hooks/useResponsive";
 import { FiltersDate, useFilter } from "../useFilter";
 import { useUrl } from "../useUrl";
 
 const TextFilter: FC<FiltersDate> = (props) => {
-  const { addDeleteValue } = useFilter();
+  const { addDeleteValue, showHide, checked, sliderAdd, sliderRemove } =
+    useFilter();
   const { clearDataFilter, send } = useUrl();
   const { respon } = useResponsive();
   const [items, setItems] = useState(props.value);
@@ -30,7 +30,7 @@ const TextFilter: FC<FiltersDate> = (props) => {
       <div
         className={respon ? r.showHidePanel : g.showHidePanel}
         onClick={(e) => {
-          BussinesLogic.showHide(
+          showHide(
             props.title,
             g.arrow,
             g.hideArrow,
@@ -95,10 +95,7 @@ const TextFilter: FC<FiltersDate> = (props) => {
                   }}
                   type="checkbox"
                   value={val}
-                  checked={BussinesLogic.checked(
-                    val.toLocaleLowerCase(),
-                    props.state
-                  )}
+                  checked={checked(val.toLocaleLowerCase(), props.state)}
                 />
                 <label
                   className={classNames(g.checkbox_label, g.color)}
@@ -109,12 +106,10 @@ const TextFilter: FC<FiltersDate> = (props) => {
                       <div
                         className={g.text}
                         onMouseEnter={(e) =>
-                          !respon &&
-                          BussinesLogic.sliderAdd(val, e, g.textHover)
+                          !respon && sliderAdd(val, e, g.textHover)
                         }
                         onMouseLeave={(e) =>
-                          !respon &&
-                          BussinesLogic.sliderRemove(val, e, g.textHover)
+                          !respon && sliderRemove(val, e, g.textHover)
                         }
                       >
                         {val}
@@ -129,7 +124,7 @@ const TextFilter: FC<FiltersDate> = (props) => {
             <button
               className={g.button}
               onClick={(e) => {
-                BussinesLogic.showHide(
+                showHide(
                   props.title,
                   g.arrow,
                   g.hideArrow,
