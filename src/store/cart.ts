@@ -76,10 +76,18 @@ export default class CartStore {
     const cart = localStorage.getItem("cart");
     const sendSet = async (req: string | number) => {
       if (req) {
-        const query = await $api.get<
-          { cart: CartResponse; item: ItemResponse }[]
-        >(`/cart/${req}`);
-        this.setCartItems(query.data);
+        const query = await $api
+          .get<{ cart: CartResponse; item: ItemResponse }[]>(`/cart/${req}`)
+          .then((res) => this.setCartItems(res.data))
+          .catch((e) => {
+            localStorage.removeItem("cart");
+            this.setCartItems([]);
+            Swal.fire({
+              title: "Server Error Cart is clear",
+              text: "Try again or refresh page",
+              icon: "error",
+            });
+          });
       } else {
         this.setCartItems([]);
       }
